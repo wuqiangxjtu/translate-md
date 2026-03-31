@@ -13,10 +13,16 @@ Translate English Markdown documents to Chinese.
 
 - Use Glob to find `.md` files matching the user-provided name (fuzzy match)
 - Search scope: current project directory
-- If multiple matches, list them and ask user to confirm
+- If multiple matches, list all matches with full paths and ask user to confirm which one to translate. **Do not** proceed with translation until user confirms
 - If no match found, report and stop
 
-### Step 2: Read and translate
+### Step 2: Check target file existence
+
+- Compute the target file path (source filename with `-zh.md` suffix)
+- If target file already exists, ask user whether to overwrite. **Do not** proceed without explicit confirmation
+- If target does not exist, proceed directly
+
+### Step 3: Read and translate
 
 - Read the entire source file
 - Translate **sentence by sentence** from English to Chinese
@@ -25,7 +31,7 @@ Translate English Markdown documents to Chinese.
 - **Do not** translate: code within code blocks, URLs, file paths, variable names, CLI commands
 - **Do translate**: prose text, comments within code blocks, heading text, table headers and cell text, alt text for images
 
-### Step 3: Write the translated file
+### Step 4: Write the translated file
 
 - Output path: same directory as source file
 - Filename: replace `.md` suffix with `-zh.md`
