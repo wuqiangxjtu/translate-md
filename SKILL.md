@@ -13,7 +13,7 @@ Translate English Markdown documents to Chinese.
 
 - Use Glob to find `.md` files matching the user-provided name (fuzzy match)
 - Search scope: current project directory
-- If multiple matches, list all matches with full paths and ask user to confirm which one to translate. **Do not** proceed with translation until user confirms
+- If multiple matches, use AskUserQuestion to list **all matches with absolute file paths** (e.g. `/home/user/project/docs/guide.md`, `/home/user/project/src/guide.md`), ask user to select which one to translate. **Do not** proceed with translation until user confirms
 - If no match found, report and stop
 
 ### Step 2: Check target file existence
